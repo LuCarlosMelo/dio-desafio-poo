@@ -1,9 +1,7 @@
 package entities;
 
-public class Course {
+public class Course extends Content {
 
-	protected String title;
-	protected String description;
 	private int workload;
 
 	public Course() {
@@ -11,25 +9,8 @@ public class Course {
 	}
 
 	public Course(String title, String description, int workload) {
-		this.title = title;
-		this.description = description;
+		super(title, description);
 		this.workload = workload;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public int getWorkload() {
@@ -42,7 +23,12 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [title=" + title + ", description=" + description + ", workload=" + workload + "]";
+		return "Course: title = " + getTitle() + ", description = " + getDescription() + ", workload = " + workload;
 	}
-
+	
+	@Override
+	public double calculator() {
+		return XP_PADRAO * workload;
+	}
+	
 }
